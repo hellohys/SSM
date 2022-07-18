@@ -19,7 +19,7 @@ import java.util.List;
 public class DeptController {
     @Autowired
     DeptService deptService;
-
+    //提交测试
     @RequestMapping("/getDept")
     @ResponseBody
     public Msg getDepts(){
