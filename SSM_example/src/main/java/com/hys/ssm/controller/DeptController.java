@@ -20,6 +20,7 @@ public class DeptController {
     @Autowired
     DeptService deptService;
     //提交测试
+    //提交测试2
     @RequestMapping("/getDept")
     @ResponseBody
     public Msg getDepts(){
