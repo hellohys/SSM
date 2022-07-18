@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 开启组件扫描 -->
+    <context:component-scan base-package="com.hys.ssm.controller" use-default-filters="false">
+        <!-- 扫描非controller注解的类 -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+<!--    &lt;!&ndash; 配置视图解析器 &ndash;&gt;-->
+<!--    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">-->
+<!--        &lt;!&ndash; 设置优先级为1 &ndash;&gt;-->
+<!--        <property name="order" value="1"/>-->
+<!--        &lt;!&ndash; 设置字符集编码为utf-8 &ndash;&gt;-->
+<!--        <property name="characterEncoding" value="UTF-8"/>-->
+<!--        &lt;!&ndash; 设置模板引擎 &ndash;&gt;-->
+<!--        <property name="templateEngine">-->
+<!--            &lt;!&ndash; 配置spring模板引擎bean &ndash;&gt;-->
+<!--            <bean class="org.thymeleaf.spring5.SpringTemplateEngine">-->
+<!--                <property name="templateResolver">-->
+<!--                    &lt;!&ndash; 配置模板解析器 &ndash;&gt;-->
+<!--                    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">-->
+<!--                        &lt;!&ndash; 视图前缀 &ndash;&gt;-->
+<!--                        <property name="prefix" value="/WEB-INF/templates/"/>-->
+<!--                        &lt;!&ndash; 视图后缀 &ndash;&gt;-->
+<!--                        <property name="suffix" value=".html"/>-->
+<!--                        &lt;!&ndash; 模板模型 &ndash;&gt;-->
+<!--                        <property name="templateMode" value="HTML5"/>-->
+<!--                        &lt;!&ndash; 模板字符集 &ndash;&gt;-->
+<!--                        <property name="characterEncoding" value="UTF-8" />-->
+<!--                    </bean>-->
+<!--                </property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!-- 默认视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- DispatcherServlet解决不了的，默认servlet去解析 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 支持springmvc更高级的一些功能，jsr303校验，快捷的ajax、映射动态请求等 -->
+    <mvc:annotation-driven/>
+
+
+</beans>
